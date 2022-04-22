@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace RoomBookingApp.Core.Processors
 {
-    public class RoomBookingRequestProcesser
+    public class RoomBookingRequestProcesser : IRoomBookingRequestProcesser
     {
         private readonly IRoomBookingService _roomBookingService;
 
@@ -19,7 +19,7 @@ namespace RoomBookingApp.Core.Processors
 
         public RoomBookingResult BookRoom(RoomBookingRequest bookingRequest)
         {
-            if(bookingRequest == null)
+            if (bookingRequest == null)
             {
                 throw new ArgumentNullException(nameof(bookingRequest));
             }
@@ -47,8 +47,8 @@ namespace RoomBookingApp.Core.Processors
             return result;
         }
 
-        private static TRoomBooking CreateRoomBookingObject<TRoomBooking>(RoomBookingRequest bookingRequest) where TRoomBooking 
-            : RoomBookingBase,new()
+        private static TRoomBooking CreateRoomBookingObject<TRoomBooking>(RoomBookingRequest bookingRequest) where TRoomBooking
+            : RoomBookingBase, new()
         {
             return new TRoomBooking
             {
